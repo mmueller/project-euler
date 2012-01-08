@@ -41,8 +41,6 @@ def numToText(n):
         return "ten"
     elif n == 9:
         return "nine"
-    elif n == 9:
-        return "nine"
     elif n == 8:
         return "eight"
     elif n == 7:
