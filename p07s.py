@@ -11,7 +11,7 @@ def sieve(n):
     for i in range(0,n):
         space.append((True, i))
     primes = []
-    
+
     for i in range(2,n):
         if space[i][0] == True:
             primes.append(space[i][1])
@@ -20,8 +20,8 @@ def sieve(n):
                     space[j] = (False, space[j][1])
 
     return primes
-    
 
 # Assume the 10001st prime occurs below 100,000
-primes = sieve(1000000)
-print primes[10000]
+if __name__ == '__main__':
+    primes = sieve(1000000)
+    print primes[10000]
