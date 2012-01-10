@@ -13,29 +13,34 @@ NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 """
 
 from math import log10
-from p07n import isPrime
+from primes import is_prime, prime_generator
 
 def isTruncatablePrime(n, direction):
     "Direction should be 1 (left-to-right) or -1 (right-to-left)."
-    while n:
-        if not isPrime(n):
-            return False
-        if direction == 1:
-            # This removes too many digits for multiples of 10, but multiples
-            # of 10 would fail the isPrime test above anyway.
-            n %= 10**int(log10(n))
-        else:
-            n = n / 10
-    return True
+    if direction == 1:
+        # This removes too many digits for multiples of 10, but multiples
+        # of 10 would fail the isPrime test above anyway.
+        n %= 10**int(log10(n))
+    else:
+        n = n / 10
+    # Truncated to zero, done
+    if not n:
+        return True
+    # Test if truncated number is still prime
+    if not is_prime(n):
+        return False
+    return isTruncatablePrime(n, direction)
 
 def find_truncatable_primes(count):
     "Find the first count truncatable primes, assuming that many exist."
-    n = 11
     result = []
-    while len(result) < count:
+    for n in prime_generator():
+        if n < 10:
+            continue
         if isTruncatablePrime(n, 1) and isTruncatablePrime(n, -1):
             result.append(n)
-        n += 1
+            if len(result) == count:
+                break
     return result
 
 if __name__ == '__main__':
