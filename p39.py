@@ -9,25 +9,34 @@ If p is the perimeter of a right angle triangle with integral length sides,
 For which value of p <= 1000, is the number of solutions maximised?
 """
 
-def find_side_solutions(p):
-    solutions = []
-    for a in xrange(1, p/2):
+from math import sqrt
+
+def find_side_solutions(limit):
+    solutions = {}
+    for i in xrange(1, limit+1):
+        solutions[i] = []
+    for a in xrange(1, limit/2):
         a2 = a**2
-        for b in range(a, p-a):
-            c = p - a - b
+        for b in range(a, limit-a):
+            b2 = b**2
+            target_c2 = a2 + b2
+            c = int(sqrt(target_c2))
             if c < b: # c should be the hypotenuse, longer than a and b
                 break
-            if c**2 == a2 + b**2:
-                solutions.append((a, b, c))
+            p = a+b+c
+            if p > limit:
+                break
+            if c**2 == target_c2:
+                solutions[p].append((a, b, c))
     return solutions
 
 def find_bountiful_perimeter(limit):
+    solutions = find_side_solutions(limit)
     max_s = 0
     max_p = 0
     for p in xrange(1, limit+1):
-        solutions = find_side_solutions(p)
-        if len(solutions) > max_s:
-            max_s = len(solutions)
+        if len(solutions[p]) > max_s:
+            max_s = len(solutions[p])
             max_p = p
             print 'New max solutions: %d (perimeter %d)' % (max_s, max_p)
     return max_p
@@ -35,5 +44,3 @@ def find_bountiful_perimeter(limit):
 if __name__ == '__main__':
     p = find_bountiful_perimeter(1000)
     print 'Most solutions:', p
-    for solution in find_side_solutions(p):
-        print ' ', solution
