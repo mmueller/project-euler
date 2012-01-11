@@ -1,13 +1,7 @@
 #!/usr/bin/env python
 
+from digits import get_digits
 from fractions import Fraction
-
-def get_digits(n):
-    digits = []
-    while n > 0:
-        digits.insert(0, n % 10)
-        n /= 10
-    return digits
 
 def is_stupid(n, d):
     ndigits = get_digits(n)
