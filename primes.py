@@ -7,6 +7,8 @@ some space-doubling magic to make it incremental.  It's reasonably fast for a
 Python implementation, but not terribly space-efficient.
 """
 
+from math import sqrt
+
 primes = []        # Used for iteration and indexing
 prime_set = set()  # Used for fast primality lookup
 space = [False]*2  # Workspace for sieve
@@ -58,6 +60,13 @@ def is_prime(n):
     global prime_set
     sieve(n+1)
     return n in prime_set
+
+def naive_is_prime(n):
+    "Naive prime test, does not generate a (potentially huge) sieve."
+    for f in xrange(2, int(sqrt(n))+1):
+        if n % f == 0:
+            return False
+    return True
 
 # Test the sieve/generator by printing all primes under 5 million
 if __name__ == '__main__':
