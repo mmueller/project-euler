@@ -28,7 +28,7 @@ def find_pandigitals():
             result += str(n*f)
             if len(result) > 9:
                 break
-            if is_pandigital(result):
+            if is_pandigital(result, 9):
                 print n, '-->', result
                 pandigitals.append(result)
     return pandigitals

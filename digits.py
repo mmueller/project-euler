@@ -10,9 +10,13 @@ def get_digits(n):
         n /= 10
     return digits
 
-def is_pandigital(n):
-    "Check if number is pandigital, i.e. contains each digit 1-9 exactly once."
-    s = str(n)
-    return len(s) == 9 and ''.join(sorted(s)) == '123456789'
-
+def is_pandigital(x, n=None):
+    "Check if number is pandigital, i.e. contains each digit 1-n exactly once."
+    s = str(x)
+    if n:
+        if len(s) != n:
+            return False
+    else:
+        n = len(s)
+    return ''.join(sorted(s)) == '123456789'[0:n]
 

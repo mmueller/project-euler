@@ -15,11 +15,8 @@ HINT: Some products can be obtained in more than one way so be sure to only
 include it once in your sum.
 """
 
+from digits import is_pandigital
 from math import log10
-
-def is_pandigital(value):
-    if len(value) != 9: return False
-    return ''.join(sorted(value)) == '123456789'
 
 def find_pandigital_products():
     result = set()
@@ -32,7 +29,7 @@ def find_pandigital_products():
             # Short circuit if results get too long
             if len(string) > 9:
                 break
-            if is_pandigital(string):
+            if is_pandigital(string, 9):
                 print a, 'x', b, '=', x
                 result.add(x)
     return result
