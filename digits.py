@@ -22,19 +22,24 @@ def is_pandigital(x, n=None):
         n = len(s)
     return ''.join(sorted(s)) == '123456789'[0:n]
 
-def generate_pandigitals(length, values=None):
+def generate_pandigitals(length, include_zero=False, values=None):
     """
     Fast recursive length-digit pandigital generator, results in ascending
     order.
     """
     if not values:
-        values = range(1, length+1)
+        if include_zero:
+            values = range(0, length)
+        else:
+            values = range(1, length+1)
     if length == 1:
         yield values[0]
     else:
         for i, value in enumerate(values):
+            if length == 10 and value == 0:
+                continue
             subvalues = values[:i] + values[i+1:]
-            subresults = generate_pandigitals(length-1, subvalues)
+            subresults = generate_pandigitals(length-1, include_zero, subvalues)
             contribution = value * (10 ** (length-1))
             for subresult in subresults:
                 yield contribution + subresult
