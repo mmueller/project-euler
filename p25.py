@@ -8,16 +8,7 @@ What is the first term in the Fibonacci sequence to contain 1000 digits?
 
 import sys
 
-def memoize(function):
-    cache = {}
-    def decorated_function(*args):
-        if args in cache:
-            return cache[args]
-        else:
-            val = function(*args)
-            cache[args] = val
-            return val
-    return decorated_function
+from util import memoize
 
 @memoize
 def fib(n):
