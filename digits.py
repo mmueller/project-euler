@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 """
 Utilities involving digit extraction and combination in integers.
 """
@@ -33,5 +35,20 @@ def generate_pandigitals(length, values=None):
         for i, value in enumerate(values):
             subvalues = values[:i] + values[i+1:]
             subresults = generate_pandigitals(length-1, subvalues)
+            contribution = value * (10 ** (length-1))
             for subresult in subresults:
-                yield value*10**(length-1) + subresult
+                yield contribution + subresult
+
+if __name__ == '__main__':
+    # Silly: Mutually test is_pandigital and generate_pandigitals
+    result = 'OK'
+    for p in generate_pandigitals(5):
+        if not is_pandigital(p):
+            print 'is_pandigital(%d) should be true.' % p
+            result = 'FAIL'
+            break
+        p = p + 1
+        if is_pandigital(p):
+            print 'is_pandigital(%d) should not be true.' % p
+            result = 'FAIL'
+    print 'Pandigitals:', result
