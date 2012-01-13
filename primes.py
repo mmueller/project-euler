@@ -68,6 +68,22 @@ def naive_is_prime(n):
             return False
     return True
 
+def factor(n):
+    "Return the prime factors of n as a list."
+    result = []
+    for p in prime_generator():
+        if n % p == 0:
+            result.append(p)
+            n /= p
+        while n % p == 0:
+            n /= p
+        if n == 1:
+            break
+        if is_prime(n):
+            result.append(n)
+            break
+    return result
+
 # Test the sieve/generator by printing all primes under 5 million
 if __name__ == '__main__':
     for p in prime_generator():
