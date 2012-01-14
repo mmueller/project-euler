@@ -30,7 +30,7 @@ def sieve(limit):
         if start < prev_limit:
             offset = (prev_limit - start) / p
             start = start + offset*p
-        for j in xrange(start, limit, p):
+        for j in range(start, limit, p):
             space[j] = False
 
     # "Full" sieve of the new space
@@ -38,7 +38,7 @@ def sieve(limit):
         if space[i]:
             primes.append(i)
             prime_set.add(i)
-            for j in xrange(i**2, limit, i):
+            for j in range(i**2, limit, i):
                 space[j] = False
     prev_limit = limit
     return primes
