@@ -10,15 +10,8 @@ There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71,
 How many circular primes are there below one million?
 """
 
-from digits import get_digits
+from digits import combine_digits, get_digits
 from primes import sieve
-
-def combine_digits(digits):
-    "Combine a list of digits into the original number."
-    if len(digits) == 0:
-        return 0
-    else:
-        return 10*combine_digits(digits[0:-1]) + digits[-1]
 
 def rotations(n):
     "Return the set of rotations of the given n. e.g. 37 outputs {37, 73}."

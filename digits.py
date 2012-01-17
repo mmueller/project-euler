@@ -12,6 +12,14 @@ def get_digits(n):
         n /= 10
     return digits
 
+def combine_digits(digits):
+    "Combine a list of digits into the original number."
+    digits = list(digits)
+    if len(digits) == 0:
+        return 0
+    else:
+        return 10*combine_digits(digits[0:-1]) + digits[-1]
+
 def is_pandigital(x, n=None):
     "Check if number is pandigital, i.e. contains each digit 1-n exactly once."
     s = str(x)
