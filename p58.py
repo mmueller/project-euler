@@ -41,4 +41,4 @@ if __name__ == '__main__':
         primes += len(filter(is_prime, corner_values))
         total += 4
         percent = 100 * primes / total
-    print 'Size %d: %d/%d (%d%%)' % (size, primes, total, percent)
+    print 'Size %d: %d/%d' % (size, primes, total)
