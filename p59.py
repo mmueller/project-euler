@@ -54,12 +54,8 @@ def decrypt_message(cipher, key):
         keyidx %= len(key)
     return message
 
-def message_words(message):
-    "Strip words out of a message (ignoring punctuation) and return list."
-    return re.findall(r'\w+', message)
-
 def score_message(message):
-    words = message_words(message)
+    words = re.findall(r'\w+', message)
     count = 0
     for word in words:
         if word in COMMON_ENGLISH_WORDS:
@@ -71,7 +67,8 @@ if __name__ == '__main__':
     best_key = 'aaa'
     best_score = 0
     for key in key_generator():
-        message = decrypt_message(cipher, key)
+        # Score based on the first 128 chars of the message
+        message = decrypt_message(cipher[:128], key)
         score = score_message(message)
         if score > best_score:
             best_key = key
