@@ -63,6 +63,8 @@ def is_prime(n):
 
 def naive_is_prime(n):
     "Naive prime test, does not generate a (potentially huge) sieve."
+    if n < 2:
+        return False
     for f in xrange(2, int(sqrt(n))+1):
         if n % f == 0:
             return False
