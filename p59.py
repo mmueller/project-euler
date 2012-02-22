@@ -63,7 +63,7 @@ def score_message(message):
     return count
 
 if __name__ == '__main__':
-    cipher = map(int, file('p59_input.txt', 'r').readline().split(','))
+    cipher = map(int, file('inputs/p59.txt', 'r').readline().split(','))
     best_key = 'aaa'
     best_score = 0
     for key in key_generator():

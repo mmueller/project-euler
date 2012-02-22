@@ -33,6 +33,6 @@ def traverse(triangle, row, col):
 
 if __name__ == '__main__':
     input = []
-    for line in file("p67_input.txt", "r"):
+    for line in file("inputs/p67.txt", "r"):
         input.append(map(int, line.split(" ")))
     print traverse(input, 0, 0)

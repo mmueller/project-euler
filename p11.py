@@ -45,7 +45,7 @@ def product(grid, width, height):
     return max(products)
 
 # Read in the input file, create a big fat array
-input = file("p11_input.txt", "r")
+input = file("inputs/p11.txt", "r")
 grid = array.array('i')
 for line in input:
     poop = line.split(" ")

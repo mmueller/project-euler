@@ -9,8 +9,8 @@ def traverse(triangle, row, col):
         return triangle[row][col] + \
                 max(traverse(triangle, row+1, col),
                     traverse(triangle, row+1, col+1))
-    
+
 input = []
-for line in file("p18_input.txt", "r"):
+for line in file("inputs/p18.txt", "r"):
     input.append(map(int, line.split(" ")))
 print traverse(input, 0, 0)

@@ -11,7 +11,7 @@ alphabetical position and adding these values we form a word value. For
 example, the word value for SKY is 19 + 11 + 25 = 55 = t10. If the word value
 is a triangle number then we shall call the word a triangle word.
 
-Using p42_input.txt, a 16K text file containing nearly two-thousand common
+Using inputs/p42.txt, a 16K text file containing nearly two-thousand common
 English words, how many are triangle words?
 """
 
@@ -34,7 +34,7 @@ def is_triangle_word(word):
     return is_triangle_number(word_value)
 
 if __name__ == '__main__':
-    words = parse_words('p42_input.txt')
+    words = parse_words('inputs/p42.txt')
     triangle_words = filter(is_triangle_word, words)
     for word in triangle_words:
         print word

@@ -24,7 +24,7 @@ below). But if two ranks tie, for example, both players have a pair of queens,
 then highest cards in each hand are compared (see example 4 below); if the
 highest cards tie then the next highest cards are compared, and so on.
 
-The file, p54_input.txt, contains one-thousand random hands dealt to two
+The file, inputs/p54.txt, contains one-thousand random hands dealt to two
 players.  Each line of the file contains ten cards (separated by a single
 space): the first five are Player 1's cards and the last five are Player 2's
 cards. You can assume that all hands are valid (no invalid characters or
@@ -188,4 +188,4 @@ def run_poker_games(filename):
     print '         Ties:', games - p1wins - p2wins
 
 if __name__ == '__main__':
-    run_poker_games('p54_input.txt')
+    run_poker_games('inputs/p54.txt')
